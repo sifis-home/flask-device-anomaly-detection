@@ -1,0 +1,8 @@
+version: '1'
+
+services:
+  app:
+    image: flask-device-anomaly-detection
+    ports:
+      - 9090:9090
+    network_mode: "host"

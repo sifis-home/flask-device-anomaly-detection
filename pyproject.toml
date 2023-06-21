@@ -1,0 +1,100 @@
+[tool.poetry]
+name = "Device_Anomaly_Detection"
+version = "0.1.0"
+description = ""
+authors = ["WisamAbbasi <39978331+WisamAbbasi@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.7.6,<3.11"
+protobuf = ">=3.9.2,<3.20"
+pip = "22.1.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+tensorflow = "2.9.1"
+tensorflow-privacy = "0.8.0"
+flask = "2.2.3"
+numpy = "1.21.5"
+coverage = {extras = ["toml"], version = "^6.4.1"}
+flake8 = "^4.0.1"
+flake8-bugbear = "^22.4.25"
+pre-commit = "^2.19.0"
+pylint= "2.14.1"
+isort = "^5.10.1"
+black = "22.3.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "pip>=22.1.2"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.pylint.master]
+jobs = 0
+
+[tool.pylint.basic]
+good-names = [
+    "ex","_","w","h","i","j","x","y","x1","x2","y1","y2"
+]
+
+[tool.pylint.format]
+max-line-length = 79
+
+[tool.pylint.messages_control]
+reports = false
+disable = [
+    "import-error",
+    "missing-docstring",
+    "unused-argument",
+    "duplicate-code",
+    "too-many-return-statements",
+    "too-many-arguments",
+    "too-many-locals",
+    "too-many-instance-attributes",
+    "too-many-public-methods",
+    "too-few-public-methods",
+]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "error",
+    "default:Using or importing the ABCs:DeprecationWarning:unittest2.*",
+    # produced by older pyparsing<=2.2.0.
+    "default:Using or importing the ABCs:DeprecationWarning:pyparsing.*",
+    "default:the imp module is deprecated in favour of importlib:DeprecationWarning:nose.*",
+    # distutils is deprecated in 3.10, scheduled for removal in 3.12
+    "ignore:The distutils package is deprecated:DeprecationWarning",
+    # produced by pytest-xdist
+    "ignore:.*type argument to addoption.*:DeprecationWarning",
+    # produced on execnet (pytest-xdist)
+    "ignore:.*inspect.getargspec.*deprecated, use inspect.signature.*:DeprecationWarning",
+    # pytest's own futurewarnings
+    "ignore::pytest.PytestExperimentalApiWarning",
+    # Do not cause SyntaxError for invalid escape sequences in py37.
+    # Those are caught/handled by pyupgrade, and not easy to filter with the
+    # module being the filename (with .py removed).
+    "default:invalid escape sequence:DeprecationWarning",
+    # ignore use of unregistered marks, because we use many to test the implementation
+    "ignore::_pytest.warning_types.PytestUnknownMarkWarning",
+    # https://github.com/benjaminp/six/issues/341
+    "ignore:_SixMetaPathImporter\\.exec_module\\(\\) not found; falling back to load_module\\(\\):ImportWarning",
+    # https://github.com/benjaminp/six/pull/352
+    "ignore:_SixMetaPathImporter\\.find_spec\\(\\) not found; falling back to find_module\\(\\):ImportWarning",
+    # https://github.com/pypa/setuptools/pull/2517
+    "ignore:VendorImporter\\.find_spec\\(\\) not found; falling back to find_module\\(\\):ImportWarning",
+    # https://github.com/pytest-dev/execnet/pull/127
+    "ignore:isSet\\(\\) is deprecated, use is_set\\(\\) instead:DeprecationWarning",
+]
+python_files = ["test_*.py", "*_test.py", "tests/python/*.py"]
+python_classes = ["Test", "Acceptance"]
+python_functions = ["test"]
+# NOTE: "doc" is not included here, but gets tested explicitly via "doctesting".
+testpaths = ["tests"]
+
+[tool.pylint.miscellaneous]
+notes = ["FIXME", "TODO"]
