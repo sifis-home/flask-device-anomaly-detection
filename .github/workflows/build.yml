@@ -1,4 +1,4 @@
-name: ci-test-app
+name: flask-device-anomaly-detection
 
 on:
   push:
