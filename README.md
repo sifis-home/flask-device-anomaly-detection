@@ -26,7 +26,7 @@ Description of the REST endpoint available while Privacy-Aware Device Fault Dete
 
 #### GET /temperature
 
-Description: Returns the result of whether the face in an image or a video frame is identified or not and the identity.
+Description: Returns the result of the temperature series normal or anomalous.
 
 Command: 
 
