@@ -7,12 +7,10 @@ authors = ["WisamAbbasi <39978331+WisamAbbasi@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 python = "3.7.17"
 pytest = "^5.2"
-protobuf = ">=3.9.2,<3.20"
 tensorflow = "2.9.1"
 tensorflow-privacy = "0.8.0"
 flask = "2.2.3"
-numpy = ">=1.21.5,<1.22.0"
-scipy = ">=1.5.0,<1.6.0"
+numpy = "1.21.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
