@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:3.10
 RUN python -m pip install --upgrade pip
 RUN pip install poetry
 RUN pip install pillow==9.2.0
