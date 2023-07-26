@@ -5,7 +5,7 @@ description = ""
 authors = ["WisamAbbasi <39978331+WisamAbbasi@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.7.6,<3.11"
+python = ">=3.7.6"
 protobuf = ">=3.9.2,<3.20"
 pip = "22.1.2"
 

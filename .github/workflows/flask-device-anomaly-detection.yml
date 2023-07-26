@@ -84,7 +84,7 @@ jobs:
     - name: Set up last Python version
       uses: actions/setup-python@v2
       with:
-        python-version: '>=3.7.6,<3.11'
+        python-version: '>=3.7.6'
 
     - name: Install poetry
       run: |
