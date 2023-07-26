@@ -4,8 +4,8 @@ RUN pip install poetry
 RUN pip install pillow==9.2.0
 RUN pip install websocket-client
 RUN pip install rel
-pip install --upgrade numpy
-pip install --upgrade scipy
+RUN pip install --upgrade numpy
+RUN pip install --upgrade scipy
 
 
 COPY . /app
