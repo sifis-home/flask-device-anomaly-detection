@@ -1,12 +1,9 @@
-from unittest.mock import MagicMock, patch
-
-import pytest
-
-import app.app
-import platform
 import datetime
 import hashlib
+import platform
 
+
+import app.app
 
 # @pytest.fixture
 # def mock_predict_instance():
@@ -23,7 +20,6 @@ import hashlib
 
 
 def test_temperature():
-    tems = "22,23,21,26,25,20,28,29,23,28,21,22,25,27,30,29,29,26,21,26,23,24,25,24,22,23,21,26,25,20,28,29,23,28,21,22,25,27,30,29,29,26,21,26,23,24,25,24"
     requestor_id = "Device123"
     requestor_type = "NSSD"
     request_id = "Device123_22/05/2023"

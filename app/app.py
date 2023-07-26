@@ -1,23 +1,16 @@
-from flask import Flask
-from flask import json
-
-import numpy as np
-
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
-import websocket
-import _thread
-import time
-import rel
-import json
-import platform
 import datetime
 import hashlib
+import json
+import platform
 import re
-import websocket
-import requests
 
+import numpy as np
+import rel
+import tensorflow as tf
+import websocket
+from flask import Flask, json
+from tensorflow import keras
+from tensorflow.keras import layers
 from tensorflow_privacy.privacy.optimizers.dp_optimizer_keras import (
     DPKerasAdamOptimizer,
 )
@@ -122,7 +115,7 @@ def temperature(temps, requestor_id, requestor_type, request_id):
 
     temps = list(temps.split(","))
     temp = [float(i) for i in temps]
-    average = sum(temp) / len(temp)
+    sum(temp) / len(temp)
 
     g = (temp - training_mean) / training_std
     w = create_sequences(g)
