@@ -30,6 +30,7 @@ threshold = np.float64(0.8328843699944564)
 
 TIME_STEPS = 48
 
+
 def on_error(ws, error):
     print(error)
 
@@ -41,11 +42,13 @@ def on_close(ws, close_status_code, close_msg):
 def on_open(ws):
     print("### Connection established ###")
 
+
 def create_sequences(values, time_steps=TIME_STEPS):
     output = []
     for i in range(len(values) - time_steps + 1):
         output.append(values[i : (i + time_steps)])
     return np.stack(output)
+
 
 model = keras.Sequential(
     [
@@ -96,9 +99,14 @@ mse = tf.keras.losses.MeanSquaredError(
 model.compile(optimizer=optimizer, loss=mse, metrics=["accuracy"])
 model.load_weights("dp_temp_anomaly_model.h5")
 
-@app.route('/temperature/<temps>/<requestor_id>/<requestor_type>/<request_id>')
-def temperature(temps,requestor_id,requestor_type,request_id):
-    request_id = re.sub('[^a-zA-Z0-9\n\.]', '', request_id).replace('\n', '').replace(' ', '')
+
+@app.route("/temperature/<temps>/<requestor_id>/<requestor_type>/<request_id>")
+def temperature(temps, requestor_id, requestor_type, request_id):
+    request_id = (
+        re.sub("[^a-zA-Z0-9\n\.]", "", request_id)
+        .replace("\n", "")
+        .replace(" ", "")
+    )
     analyzer_id = platform.node()
 
     # Get current date and time
@@ -106,7 +114,7 @@ def temperature(temps,requestor_id,requestor_type,request_id):
 
     # Generate a random hash using SHA-256 algorithm
     hash_object = hashlib.sha256()
-    hash_object.update(bytes(str(now), 'utf-8'))
+    hash_object.update(bytes(str(now), "utf-8"))
     hash_value = hash_object.hexdigest()
 
     # Concatenate the time and the hash
@@ -126,35 +134,35 @@ def temperature(temps,requestor_id,requestor_type,request_id):
     anomaly = mae_loss > threshold
 
     ws_req_final = {
-                    "RequestPostTopicUUID": {
-                    "topic_name": "SIFIS:Privacy_Aware_Device_Anomaly_Detection_Results",
-                    "topic_uuid": "Device_Anomaly_Detection_Results",
-                    "value": {
-                        "description": "Device Anomaly Detection Results",
-                        "requestor_id": str(requestor_id),
-                        "requestor_type": str(requestor_type),
-                        "request_id": str(request_id),
-                        "analyzer_id": str(analyzer_id),
-                        "analysis_id": str(analysis_id),
-                        "connected": True,
-                        "anomaly": str(anomaly[0])
-                    }
-                }
-            }
+        "RequestPostTopicUUID": {
+            "topic_name": "SIFIS:Privacy_Aware_Device_Anomaly_Detection_Results",
+            "topic_uuid": "Device_Anomaly_Detection_Results",
+            "value": {
+                "description": "Device Anomaly Detection Results",
+                "requestor_id": str(requestor_id),
+                "requestor_type": str(requestor_type),
+                "request_id": str(request_id),
+                "analyzer_id": str(analyzer_id),
+                "analysis_id": str(analysis_id),
+                "connected": True,
+                "anomaly": str(anomaly[0]),
+            },
+        }
+    }
 
     ws.send(json.dumps(ws_req_final))
     return ws_req_final
 
+
 if __name__ == "__main__":
-    ws = websocket.WebSocketApp("ws://localhost:3000/ws",
-                                on_open=on_open,
-                                on_error=on_error,
-                                on_close=on_close)
+    ws = websocket.WebSocketApp(
+        "ws://localhost:3000/ws",
+        on_open=on_open,
+        on_error=on_error,
+        on_close=on_close,
+    )
 
     ws.run_forever(dispatcher=rel)  # Set dispatcher to automatic reconnection
     rel.signal(2, rel.abort)  # Keyboard Interrupt
 
-    app.run(host='0.0.0.0', port=9090)
-
-
-
+    app.run(host="0.0.0.0", port=9090)

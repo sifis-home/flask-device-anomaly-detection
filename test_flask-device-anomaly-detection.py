@@ -21,6 +21,7 @@ import hashlib
 #     ) as mock_kernel_classification:
 #         yield mock_kernel_classification
 
+
 def test_temperature():
     tems = "22,23,21,26,25,20,28,29,23,28,21,22,25,27,30,29,29,26,21,26,23,24,25,24,22,23,21,26,25,20,28,29,23,28,21,22,25,27,30,29,29,26,21,26,23,24,25,24"
     requestor_id = "Device123"
@@ -34,30 +35,32 @@ def test_temperature():
 
     # Generate a random hash using SHA-256 algorithm
     hash_object = hashlib.sha256()
-    hash_object.update(bytes(str(now), 'utf-8'))
+    hash_object.update(bytes(str(now), "utf-8"))
     hash_value = hash_object.hexdigest()
 
     # Concatenate the time and the hash
     analysis_id = str(analyzer_id) + str(now) + hash_value
 
     ws_req_final = {
-                    "RequestPostTopicUUID": {
-                    "topic_name": "SIFIS:Privacy_Aware_Device_Anomaly_Detection_Results",
-                    "topic_uuid": "Device_Anomaly_Detection_Results",
-                    "value": {
-                        "description": "Device Anomaly Detection Results",
-                        "requestor_id": "Device123",
-                        "requestor_type": "NSSD",
-                        "request_id": "Device123_22/05/2023",
-                        "analyzer_id": str(analyzer_id),
-                        "analysis_id": str(analysis_id),
-                        "connected": True,
-                        "anomaly": "True"
-                    }
-                }
-            }
+        "RequestPostTopicUUID": {
+            "topic_name": "SIFIS:Privacy_Aware_Device_Anomaly_Detection_Results",
+            "topic_uuid": "Device_Anomaly_Detection_Results",
+            "value": {
+                "description": "Device Anomaly Detection Results",
+                "requestor_id": "Device123",
+                "requestor_type": "NSSD",
+                "request_id": "Device123_22/05/2023",
+                "analyzer_id": str(analyzer_id),
+                "analysis_id": str(analysis_id),
+                "connected": True,
+                "anomaly": "True",
+            },
+        }
+    }
 
-    response = app.app.temperature(temps,requestor_id,requestor_type,request_id)
+    response = app.app.temperature(
+        temps, requestor_id, requestor_type, request_id
+    )
     assert response == ws_req_final
 
 
