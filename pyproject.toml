@@ -5,7 +5,7 @@ description = ""
 authors = ["WisamAbbasi <39978331+WisamAbbasi@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.7.6,<3.11"
+python = "3.7.6"
 pytest = "^5.2"
 protobuf = ">=3.9.2,<3.20"
 tensorflow = "2.9.1"
@@ -18,10 +18,7 @@ scipy = ">=1.5.0,<1.6.0"
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
 coverage = {extras = ["toml"], version = "^6.4.1"}
-flake8 = "^4.0.1"
-flake8-bugbear = "^22.4.25"
 pre-commit = "^2.19.0"
-pylint= "2.14.1"
 isort = "^5.10.1"
 black = "22.3.0"
 
@@ -36,31 +33,6 @@ line-length = 79
 profile = "black"
 line_length = 79
 
-[tool.pylint.master]
-jobs = 0
-
-[tool.pylint.basic]
-good-names = [
-    "ex","_","w","h","i","j","x","y","x1","x2","y1","y2"
-]
-
-[tool.pylint.format]
-max-line-length = 79
-
-[tool.pylint.messages_control]
-reports = false
-disable = [
-    "import-error",
-    "missing-docstring",
-    "unused-argument",
-    "duplicate-code",
-    "too-many-return-statements",
-    "too-many-arguments",
-    "too-many-locals",
-    "too-many-instance-attributes",
-    "too-many-public-methods",
-    "too-few-public-methods",
-]
 
 [tool.pytest.ini_options]
 filterwarnings = [
@@ -97,9 +69,6 @@ python_classes = ["Test", "Acceptance"]
 python_functions = ["test"]
 # NOTE: "doc" is not included here, but gets tested explicitly via "doctesting".
 testpaths = ["tests"]
-
-[tool.pylint.miscellaneous]
-notes = ["FIXME", "TODO"]
 
 [tool.coverage.run]
 omit = [".*", "*/site-packages/*"]
