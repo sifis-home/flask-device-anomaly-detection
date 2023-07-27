@@ -2,7 +2,6 @@ import datetime
 import hashlib
 import platform
 
-
 import app.app
 
 # @pytest.fixture
