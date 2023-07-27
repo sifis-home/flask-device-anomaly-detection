@@ -7,10 +7,10 @@ authors = ["WisamAbbasi <39978331+WisamAbbasi@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 python = "3.10.12"
 pytest = "^7.2.1"
-tensorflow = "^2.9.1, <3.0.0"
+tensorflow = "^2.12.1, <3.0.0"
 tensorflow-privacy = "0.8.10"
 flask = "2.3.2"
-numpy = "1.25.1"
+numpy = "1.24.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.2.1"
@@ -31,42 +31,12 @@ line-length = 79
 profile = "black"
 line_length = 79
 
-
-[tool.pytest.ini_options]
-filterwarnings = [
-    "error",
-    "default:Using or importing the ABCs:DeprecationWarning:unittest2.*",
-    # produced by older pyparsing<=2.2.0.
-    "default:Using or importing the ABCs:DeprecationWarning:pyparsing.*",
-    "default:the imp module is deprecated in favour of importlib:DeprecationWarning:nose.*",
-    # distutils is deprecated in 3.10, scheduled for removal in 3.12
-    "ignore:The distutils package is deprecated:DeprecationWarning",
-    # produced by pytest-xdist
-    "ignore:.*type argument to addoption.*:DeprecationWarning",
-    # produced on execnet (pytest-xdist)
-    "ignore:.*inspect.getargspec.*deprecated, use inspect.signature.*:DeprecationWarning",
-    # pytest's own futurewarnings
-    "ignore::pytest.PytestExperimentalApiWarning",
-    # Do not cause SyntaxError for invalid escape sequences in py37.
-    # Those are caught/handled by pyupgrade, and not easy to filter with the
-    # module being the filename (with .py removed).
-    "default:invalid escape sequence:DeprecationWarning",
-    # ignore use of unregistered marks, because we use many to test the implementation
-    "ignore::_pytest.warning_types.PytestUnknownMarkWarning",
-    # https://github.com/benjaminp/six/issues/341
-    "ignore:_SixMetaPathImporter\\.exec_module\\(\\) not found; falling back to load_module\\(\\):ImportWarning",
-    # https://github.com/benjaminp/six/pull/352
-    "ignore:_SixMetaPathImporter\\.find_spec\\(\\) not found; falling back to find_module\\(\\):ImportWarning",
-    # https://github.com/pypa/setuptools/pull/2517
-    "ignore:VendorImporter\\.find_spec\\(\\) not found; falling back to find_module\\(\\):ImportWarning",
-    # https://github.com/pytest-dev/execnet/pull/127
-    "ignore:isSet\\(\\) is deprecated, use is_set\\(\\) instead:DeprecationWarning",
+[tool.ruff]
+line-length = 79
+select = [
+    "F401",
+    "F403",
 ]
-python_files = ["test_*.py", "*_test.py", "tests/python/*.py"]
-python_classes = ["Test", "Acceptance"]
-python_functions = ["test"]
-# NOTE: "doc" is not included here, but gets tested explicitly via "doctesting".
-testpaths = ["tests"]
 
 [tool.coverage.run]
 omit = [".*", "*/site-packages/*"]
