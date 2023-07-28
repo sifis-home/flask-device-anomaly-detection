@@ -7,7 +7,7 @@ WORKDIR /app
 
 COPY dp_temp_anomaly_model.h5 /app
 COPY pyproject.toml /app
-COPY tests /app
+COPY test_flask-device-anomaly-detection.py /app
 
 RUN poetry config virtualenvs.create false
 RUN poetry install
