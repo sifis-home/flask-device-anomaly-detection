@@ -92,7 +92,6 @@ mse = tf.keras.losses.MeanSquaredError(
 model.compile(optimizer=optimizer, loss=mse, metrics=["accuracy"])
 model.load_weights("dp_temp_anomaly_model.h5")
 
-
 @app.route("/temperature/<temps>/<requestor_id>/<requestor_type>/<request_id>")
 def temperature(temps, requestor_id, requestor_type, request_id):
     request_id = (
