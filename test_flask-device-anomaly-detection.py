@@ -1,6 +1,5 @@
 from unittest.mock import patch
 
-
 from app.app import create_sequences, on_close, on_error, on_open
 
 
