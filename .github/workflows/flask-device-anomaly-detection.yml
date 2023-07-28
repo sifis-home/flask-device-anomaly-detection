@@ -101,9 +101,6 @@ jobs:
         poetry run coverage run -m pytest
         poetry run coverage report -m
 
-    - name: Upload Coverage to Codecov
-      uses: codecov/codecov-action@v3
-
     - name: Create Codecov report
       run: |
         poetry run coverage lcov
