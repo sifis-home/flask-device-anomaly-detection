@@ -1,4 +1,21 @@
 # WP4 Analytic: Privacy-Aware Device Fault Detection
+
+[![Actions Status][actions badge]][actions]
+[![CodeCov][codecov badge]][codecov]
+[![LICENSE][license badge]][license]
+
+
+
+<!-- Links -->
+[actions]: https://github.com/sifis-home/flask-device-anomaly-detection/actions
+[codecov]: https://codecov.io/gh/sifis-home/flask-device-anomaly-detection
+[license]: LICENSES/MIT.txt
+
+<!-- Badges -->
+[actions badge]: https://github.com/sifis-home/flask-device-anomaly-detection/workflows/flask-device-anomaly-detection/badge.svg
+[codecov badge]: https://codecov.io/gh/sifis-home/flask-device-anomaly-detection/branch/master/graph/badge.svg
+[license badge]: https://img.shields.io/badge/license-MIT-blue.svg
+
 Faulty devices can either affect the whole performance of a system by getting disconnected or by staying connected to the network while not performing as expected and sending wrong readings to intended data recipients. The aim of this analytic is to ensure network reliability, service availability, good performance, and better monitoring of connected devices for service restoring and correction action time minimization in case an anomaly has been detected. 
 
 Device fault detection uses time series data collected from sensors such as readings of humidity, temperature, noise, vibration, and air flows. Then this analytic processes these data and flags abnormal data deviations based on a specific threshold defined after the training phase leveraging readings during normal device behaviour. The device fault detection analytic uses an unsupervised learning method since the anomaly that might occur is unknown and not expected. A type of artificial neural network trained on unlabelled dataset, namely Autoencoder, is used in this context.
