@@ -4,8 +4,6 @@
 [![CodeCov][codecov badge]][codecov]
 [![LICENSE][license badge]][license]
 
-
-
 <!-- Links -->
 [actions]: https://github.com/sifis-home/flask-device-anomaly-detection/actions
 [codecov]: https://codecov.io/gh/sifis-home/flask-device-anomaly-detection
