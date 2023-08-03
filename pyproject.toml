@@ -1,8 +1,18 @@
 [tool.poetry]
 name = "Device_Anomaly_Detection"
-version = "0.1.0"
-description = ""
-authors = ["WisamAbbasi <39978331+WisamAbbasi@users.noreply.github.com>"]
+version = "0.0"
+description = "Device Anomaly Detection based on time series temperature data"
+authors = ["WisamAbbasi <wesam.alabbasi@iit.cnr.it>"]
+repository = "https://github.com/sifis-home/flask-device-anomaly-detection"
+license = "MIT"
+classifiers = [
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3 :: Only",
+]
+include = ["README.md", "LICENSE.md", "flask-device-anomaly-detection/data/*"]
+
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
