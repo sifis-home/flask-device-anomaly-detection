@@ -20,7 +20,7 @@ Device fault detection uses time series data collected from sensors such as read
 
 The used dataset to train the model is Intel Berkeley Research Lab Sensor [(IBRL) Dataset](http://db.csail.mit.edu/labdata/labdata.html), should be exported from the previous link and saved as "data.txt" of the same directory as the code. It contains information about data collected from 54 sensors deployed in the Intel Berkeley Research lab between February 28th and April 5th, 2004. This dataset includes a log of about 2.3 million readings collected from the sensors related to temperature, humidity, voltage, and light. Only the data related to temperature and humidity are used in the performed analytics.
 
-Autoencoders are used for anomaly detection, and they are also used for data reconstruction. Thus, the real data are kept private and only the reconstructed data are shared. Moreover, differential privacy is used with autoencoders during the analysis phase to minimize data memorization by the analytics model and protect individual data instances privacy. 
+Autoencoders are used for anomaly detection, and they are also used for data reconstruction. Thus, real data are kept private and only the reconstructed data are shared. Moreover, differential privacy is used with autoencoders during the analysis phase to minimize data memorization by the analytics model and protect individual data instances privacy. 
 
 
 ## Deploying
