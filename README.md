@@ -26,6 +26,7 @@ Autoencoders are used for anomaly detection, and they are also used for data rec
 ## Deploying
 
 ### Privacy-Aware Device Fault Detection in a container
+The DHT and the Analytics-API containers should be running before starting to build and run the image and container of the Privacy-Aware Device Fault Detection.
 
 Privacy-Aware Device Fault Detection is intended to run in a docker container on port 9090. The Dockerfile at the root of this repo describes the container. To build and run it execute the following commands:
 
